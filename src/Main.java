@@ -8,16 +8,16 @@ public class Main {
 
     public static int[][] clipConnections = {
             {},
-            {1, 2, 4, 5, 7, 10},
-            {1, 2, 3, 4, 5, 7, 8, 9, 10, 11},
-            {5},
-            {1, 2, 3, 8, 9, 11},
+            {1, 2, 4, 7, 10},
+            {1, 2, 4, 7, 8, 9, 10, 11},
+            {},
+            {1, 2, 8, 9, 11},
             {2, 4, 11},
             {},
-            {1, 2, 3, 4, 5, 8},
-            {1, 3, 4, 7, 8, 10, 11},
-            {1, 3, 4, 5, 7, 8, 9, 10, 11},
-            {1, 2, 3, 4, 7, 8},
+            {1, 2, 4, 8},
+            {1, 4, 7, 10, 11},
+            {1, 4, 7, 8, 9, 10, 11},
+            {1, 2, 4, 7, 8},
             {7},
     };
 
@@ -69,8 +69,6 @@ public class Main {
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-
-            System.out.println("PLAYING: CLIP #" + index + " ~ " + path);
 
             Thread.sleep(clip.getMicrosecondLength() / 1000);
 

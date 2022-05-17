@@ -1,20 +1,21 @@
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
+import java.util.Arrays;
 
 public class Main {
 
     public static Clip clip;
 
     public static int[][] clipConnections = {
+            {},
             {1, 2, 4, 5, 7, 10},
             {1, 2, 3, 4, 5, 7, 8, 9, 10, 11},
             {5},
-            {1, 2, 3, 4, 8, 9, 11},
+            {1, 2, 3, 8, 9, 11},
             {2, 4, 11},
             {},
-            {1, 2, 3, 4, 5, 6, 8},
-            {1, 3, 4, 6, 7, 8, 10, 11},
+            {1, 2, 3, 4, 5, 8},
+            {1, 3, 4, 7, 8, 10, 11},
             {1, 3, 4, 5, 7, 8, 9, 10, 11},
             {1, 2, 3, 4, 7, 8},
             {7},
@@ -22,10 +23,18 @@ public class Main {
 
     public static void main(String[] args){
 
-        int[] indices = new int[]{
-                4, 8, 4, 8, 4, 8
-        };
+        int[] indices = new int[10];
 
+        int curr = 1;
+        for(int i = 0; i < indices.length; i++)
+        {
+            indices[i] = curr;
+
+            int rand = (int)(Math.random() * clipConnections[curr].length);
+            curr = clipConnections[curr][rand];
+        }
+
+        System.out.println(Arrays.toString(indices));
         playSound(indices);
 
     }

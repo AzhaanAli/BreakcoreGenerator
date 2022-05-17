@@ -23,16 +23,11 @@ public class Main {
 
     public static void main(String[] args){
 
-        int[] indices = new int[10];
-
-        int curr = 1;
-        for(int i = 0; i < indices.length; i++)
-        {
-            indices[i] = curr;
-
-            int rand = (int)(Math.random() * clipConnections[curr].length);
-            curr = clipConnections[curr][rand];
-        }
+        int[] indices = new int[]{
+                8, 4,
+                8, 4,
+                1, 10,
+        };
 
         System.out.println(Arrays.toString(indices));
         playSound(indices);
@@ -85,6 +80,19 @@ public class Main {
 
         clearSoundBarrier(indices[0]);
         for(int i : indices) playSound(i);
+
+    }
+
+    public static void populateArray(int[] indices){
+
+        int curr = 1;
+        for(int i = 0; i < indices.length; i++)
+        {
+            indices[i] = curr;
+
+            int rand = (int)(Math.random() * clipConnections[curr].length);
+            curr = clipConnections[curr][rand];
+        }
 
     }
 
